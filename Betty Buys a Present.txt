@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int P = scanner.nextInt(); // price of the gift
+        int K = scanner.nextInt(); // number of coins to use
+
+        List<List<Integer>> combinations = new ArrayList<>();
+        findCombinations(P, K, 1, new ArrayList<>(), combinations);
+
+        if (combinations.isEmpty()) {
+            System.out.println("-1");
+        } else {
+            for (List<Integer> combination : combinations) {
+                for (int i = 0; i < combination.size(); i++) {
+                    System.out.print(combination.get(i));
+                    if (i < combination.size() - 1) {
+                        System.out.print(" ");
+                    }
+                }
+                System.out.println();
+            }
+        }
+    }
+
+    public static void findCombinations(int target, int coinsLeft, int start, List<Integer> currentCombination, List<List<Integer>> combinations) {
+        if (target == 0 && coinsLeft == 0) {
+            combinations.add(new ArrayList<>(currentCombination));
+            return;
+        }
+
+        if (target < 0 || coinsLeft == 0 || start > 9) {
+            return;
+        }
+
+        for (int i = start; i <= 9; i++) {
+            currentCombination.add(i);
+            findCombinations(target - i, coinsLeft - 1, i + 1, currentCombination, combinations);
+            currentCombination.remove(currentCombination.size() - 1);
+        }
+    }
+}
