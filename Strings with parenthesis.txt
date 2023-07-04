@@ -1,0 +1,31 @@
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner s=new Scanner(System.in);
+        
+        String str=s.nextLine();
+        
+        // System.out.println(str);
+        List<Integer> list=new ArrayList();
+        
+        for(int i=0;i<str.length();i++){
+            int x=(int) str.charAt(i);
+            
+            if(x==40 || x==41 || x==123 || x==125 || x==91 || x==93){
+                list.add(x);
+            }
+        }
+        
+        Stack<Integer> stc=new Stack();
+        
+        // System.out.println(list);
+        
+        for(int i=0;i<list.size();i++){
+            if(!stc.isEmpty() && ((stc.peek()==91 && list.get(i)==93) || (stc.peek()==40 && list.get(i)==41) || (stc.peek()==123 && list.get(i)==125))){
+                stc.pop();
+            }
+            else stc.push(list.get(i));
+        }
+        System.out.println(stc.size()==0?"balanced":"unbalanced");
+    }
+}

@@ -1,0 +1,61 @@
+import java.util.*;
+class Main{
+    public static void main(String[] arg){
+        Scanner s = new Scanner(System.in);
+        
+        int t = s.nextInt();
+
+        while(t--!=0){
+            int n = s.nextInt();
+            String str = s.next();
+            
+            if(isPalindromeAfterRemovingChar(str)) System.out.println("YES");
+            
+            else System.out.println("NO");
+        }
+    }
+    
+    
+    
+
+public static boolean isPalindromeAfterRemovingChar(String s) {
+    int i = 0;
+    int j = s.length() - 1;
+    char c1 = ' ';
+    char c2 = ' ';
+
+    
+    while (i < j && s.charAt(i) == s.charAt(j)) {
+        i++;
+        j--;
+    }
+
+    
+    if (i < j) {
+        c1 = s.charAt(i);
+        c2 = s.charAt(j);
+    }
+
+
+    String modified = s.replaceAll(Character.toString(c1), "");
+    String modified2 = s.replaceAll(Character.toString(c2), "");
+
+    
+    return isPalindrome(modified) || isPalindrome(modified2);
+}
+
+public static boolean isPalindrome(String s) {
+    int left = 0;
+    int right = s.length() - 1;
+
+    while (left < right) {
+        if (s.charAt(left) != s.charAt(right)) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+
+    return true;
+}
+}
