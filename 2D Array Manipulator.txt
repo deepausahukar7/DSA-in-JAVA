@@ -1,0 +1,33 @@
+import java.util.*;
+
+class Main{
+  public static void manipulator(String[][]arr, int n){
+      for(int i=0; i<n; i++){
+          for(int j=0; j<n; j++){
+              System.out.print(arr[j][i]+" ");
+          }
+          System.out.println();
+      }
+  }  
+    
+    
+    
+	public static void main(String args[]){
+    	//Write your code here
+    	Scanner s = new Scanner(System.in);
+    	String[] str = s.nextLine().split(" ");
+    	int n = str.length;
+    	
+    	try{
+    	    String[][]arr = new String[n][n];
+    	    arr[0]=str;
+    	    for(int i=1; i<n; i++){
+    	        arr[i]=s.nextLine().split(" ");
+    	    }
+    	    manipulator(arr,n);
+    	}
+    	catch(Exception e){
+    	    System.out.println("Invalid matrix");
+    	}
+    }
+}

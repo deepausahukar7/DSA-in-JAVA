@@ -1,0 +1,88 @@
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        String[] names = new String[n];
+        int[] marks = new int[n];
+        for(int i=0; i<n; i++){
+            names[i] = sc.next();
+            marks[i] = sc.nextInt();
+            
+        }
+       sortByNames(names,marks);
+       sortByMarks(names,marks);
+       dis(names,marks);
+        
+        
+    }
+   public static void swap(String[] names, int[] marks, int i, int j){
+       int temp = marks[i];
+       marks[i] = marks[j];
+       marks[j] = temp;
+       
+       
+       String temp2 = names[i];
+       names[i] = names[j];
+       names[j] = temp2;
+   } 
+   
+   public static boolean check(String s1, String s2){
+       int len = Math.min(s1.length(), s2.length());
+       
+       for(int i=0; i<len; i++){
+           if(s1.charAt(i) != s2.charAt(i)){
+               if(s1.charAt(i) > s2.charAt(i)){
+                   return true;
+               }
+               else return false;
+           }
+       }
+       return false;
+   }
+    public static void sortByNames(String[] names, int[] marks){
+        for(int i=0; i<names.length-1; i++){
+           for(int j=0; j<names.length-1; j++){
+               if(check(names[j],names[j+1])){
+                   swap(names,marks,j,j+1);
+               }
+           } 
+        }
+    }
+    public static void sortByMarks(String[] names, int[] marks){
+       for(int i=0; i<names.length-1; i++){
+           for(int j=0; j<names.length-1; j++){
+               if(marks[j] < marks[j+1]){
+                   swap(names,marks,j,j+1);
+               }
+           } 
+        } 
+    }
+    
+    public static void dis(String[] names, int[] marks){
+        
+        int pre = -1;
+        int rank = 1;
+        int c = 0;
+        
+        for(int i=0; i<names.length; i++){
+            if(marks[i] == pre){
+                System.out.println(rank+" "+names[i]);
+            }
+            else {
+                rank += c;
+                System.out.println(rank+" "+names[i]);
+                
+                c = 0;
+            }
+            c++;
+            pre = marks[i];
+        }
+        
+    }
+    
+    
+    
+    
+}
