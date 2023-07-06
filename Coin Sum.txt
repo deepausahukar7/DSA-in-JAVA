@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class Main{
+
+  public static void main(String[] args) {
+    Scanner s = new Scanner(System.in);
+
+    int n = s.nextInt();
+    int[] coins = new int[n];
+    
+    for (int i = 0; i < n; i++) coins[i] = s.nextInt();
+    int sum = 0;
+    
+    for (int i = 0; i < n; i++) {
+      sum += coins[i];
+    }
+
+    boolean[] dp = new boolean[sum + 1];
+    dp[0] = true;
+    
+
+    for (int i = 0; i < n; i++) {
+      for (int j = sum; j >= coins[i]; j--) {
+        dp[j] |= dp[j - coins[i]];
+      }
+    }
+
+    int count = 0;
+    for (int i = 0; i <= sum; i++) {
+      if (dp[i]) {
+        count++;
+      }
+    }
+
+    System.out.println(count-1);
+
+    for (int i = 1; i <= sum; i++) {
+      if (dp[i]) {
+        System.out.print(i + " ");
+      }
+    }
+  }
+}

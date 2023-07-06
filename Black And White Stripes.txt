@@ -1,0 +1,27 @@
+import java.util.*;
+class Main{
+    public static void main(String [] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t--!=0){
+            int n = sc.nextInt();
+            int k = sc.nextInt();
+            String str = sc.next();
+            
+            int i = 0;
+            int ans = Integer.MAX_VALUE;
+            while(k<=n){
+            int count = 0;
+            for(int j=i; j<k; j++){
+                if(str.charAt(j)=='W')
+                count++;
+            }
+            ans = Math.min(count,ans);
+            i++;
+            k++;
+            
+        }
+        System.out.println(ans);
+        }
+    }
+}
