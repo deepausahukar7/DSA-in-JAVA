@@ -1,0 +1,48 @@
+import java.util.*;
+class Main{
+    public static void ticTacToe(String[][] matrix){
+       
+       String x = "xxx";
+       String o = "ooo";
+       
+       String bag = "";
+       String bag1 = "";
+       
+        for(int i=0; i<=2; i++){
+           String bag2 = ""; 
+       for(int j=0; j <=2; j++){
+           if(i==j){
+               bag += matrix[i][j];
+           }
+           if(i+j == 2){
+               bag1 += matrix[i][j];
+           }
+           bag2 += matrix[i][j];
+           
+           if(bag2.equals(x)){
+               System.out.println("x");
+           }
+           else if(bag2.equals(o)){
+               System.out.println("o");
+           }
+       }
+        }
+      if(bag.equals(x) || bag1.equals(x)){
+          System.out.println("x");
+      }    
+      else if(bag.equals(o) || bag1.equals(o)){
+          System.out.println("o");
+      }    
+    }
+    
+    public static void main(String[] args){
+      Scanner sc = new Scanner(System.in);
+      String[][] matrix = new String[3][3];
+      for(int i=0; i< 3; i++){
+          for(int j=0; j<3; j++){
+              matrix[i][j] = sc.next();
+          }
+      }
+      ticTacToe(matrix);
+    }
+}

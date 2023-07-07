@@ -1,0 +1,50 @@
+import java.util.*;
+class Main{
+   public static int sherlockAndAnagram(String str){
+       int total = 0;
+       for(int i=0; i<str.length(); i++){
+           
+           int[] arr = new int[26];
+           for(int j=i; j>=0; j--){
+               arr[str.charAt(j)-'a']++;
+           
+           
+           for(int k=0; k<j; k++){
+               int[] chars = new int[26];
+               int x = k,count=0;
+             
+               while(count<=i-j){
+                   chars[str.charAt(x)-'a']++;
+                   x++;
+                   count++;
+               }
+               
+               boolean flag = true;
+               
+               for(int z=0; z<26; z++){
+                   if(arr[z]!=chars[z]){
+                       flag = false;
+                       break;
+                   }
+               }
+               if(flag) total++;
+    
+           }
+           
+           }  
+       }
+       return total;
+       
+   }
+   
+   
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t--!=0){
+            String str = sc.next();
+            
+            System.out.println(sherlockAndAnagram(str));
+        }
+    }
+}

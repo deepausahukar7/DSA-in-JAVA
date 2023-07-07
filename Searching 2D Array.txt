@@ -1,0 +1,83 @@
+import java.util.*;
+
+public class Main {
+    public static char[][] stringToArray(String[] mat) {
+        int n = mat.length;
+        int m = mat[0].length();
+        char[][] arr = new char[n][m];
+
+        for (int i = 0; i < n; i++) {
+            String str = mat[i];
+            for (int j = 0; j < m; j++) {
+                arr[i][j] = str.charAt(j);
+            }
+        }
+
+        return arr;
+    }
+
+    public static int searchingArray(char[][] arr) {
+        int count = 0;
+        int n = arr.length;
+        int m = arr[0].length;
+        String temp;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (m - j >= 4) {
+                    temp = String.valueOf(arr[i][j]) + String.valueOf(arr[i][j + 1]) +
+                            String.valueOf(arr[i][j + 2]) + String.valueOf(arr[i][j + 3]);
+                    if (temp.equals("saba")) {
+                        count++;
+                    }
+                }
+
+                
+                if (n - i >= 4) {
+                    temp = String.valueOf(arr[i][j]) + String.valueOf(arr[i + 1][j]) +
+                            String.valueOf(arr[i + 2][j]) + String.valueOf(arr[i + 3][j]);
+                    if (temp.equals("saba")) {
+                        count++;
+                    }
+                }
+
+            
+                if ((m - j >= 4) && (n - i >= 4)) {
+                    temp = String.valueOf(arr[i][j]) + String.valueOf(arr[i + 1][j + 1]) +
+                            String.valueOf(arr[i + 2][j + 2]) + String.valueOf(arr[i + 3][j + 3]);
+                    if (temp.equals("saba")) {
+                        count++;
+                    }
+                }
+
+                
+                if (i >= 3 && m - j >= 4) {
+                    temp = String.valueOf(arr[i][j]) + String.valueOf(arr[i - 1][j + 1]) +
+                            String.valueOf(arr[i - 2][j + 2]) + String.valueOf(arr[i - 3][j + 3]);
+                    if (temp.equals("saba")) {
+                        count++;
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] firstLine = sc.nextLine().split(" ");
+        int n = Integer.parseInt(firstLine[0]);
+        int m = Integer.parseInt(firstLine[1]);
+
+        String[] mat = new String[n];
+        for (int i = 0; i < n; i++) {
+            mat[i] = sc.nextLine();
+        }
+
+        char[][] arr = stringToArray(mat);
+
+        System.out.println(searchingArray(arr));
+    }
+}
