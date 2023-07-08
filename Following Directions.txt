@@ -1,0 +1,33 @@
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+        
+        int t = sc.nextInt();
+        while(t--!=0){
+            int n = sc.nextInt();
+            String str = sc.next();
+            
+            int i=0;
+            int j=0;
+            String ans = "NO";
+            
+            for(int k=0; k<n; k++){
+                if(str.charAt(k)=='U') j++;
+                else if(str.charAt(k)=='D') j--;
+                else if(str.charAt(k)=='L') i--;
+                else if(str.charAt(k)=='R') i++;
+                
+                if(i==1 && j==1){
+                ans = "YES";
+                break;
+            }
+            
+        }
+        System.out.println(ans);
+    }
+    
+    }
+    
+}
