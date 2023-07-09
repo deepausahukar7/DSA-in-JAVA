@@ -1,0 +1,26 @@
+import java.util.*;
+class Main{
+    public static void main(String[] arg){
+        Scanner s =new Scanner(System.in);
+        
+        int t=s.nextInt();
+        
+        while(t--!=0){
+            int days=s.nextInt();
+            
+             int[] months = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int year = days / 365;
+        int month = 0, day = 0;
+        days %= 365;
+        for (int i = 1; i <= 12; i++) {
+            if (days - months[i] < 0) {
+                month = i;
+                day = days;
+                break;
+            }
+            days -= months[i];
+        }
+        System.out.println(year + " Year " + (month-1) + " Month " + day + " Day");
+    }
+    }
+}
