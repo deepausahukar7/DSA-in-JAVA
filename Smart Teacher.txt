@@ -1,0 +1,34 @@
+import java.util.*;
+public class Main {
+    
+    public static void main(String[] args) {
+       Scanner s =new Scanner(System.in);
+       int t=s.nextInt();
+       
+       while(t--!=0){
+           int n=s.nextInt();
+           String sol=s.next();
+           String cor=s.next();
+           
+           String s1=remove(sol);
+           String s2=remove(cor);
+           
+          if(s1.equals(s2)) System.out.println("CORRECT");
+          else System.out.println("WRONG");
+       }
+    }
+    
+    public static String remove(String str) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+        if (str.charAt(i) == '#') {
+            if (sb.length() > 0) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        } else {
+            sb.append(str.charAt(i));
+        }
+    }
+    return sb.toString();
+}
+}

@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t--!= 0) {
+            int n = scanner.nextInt();
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++) {
+                arr[i] = scanner.nextInt();
+            }
+            NGE(n, arr);
+        }
+    }
+
+    public static void NGE(int n, int[] arr) {
+        Stack<Integer> stack = new Stack<>();
+        int[] ans = new int[n];
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+                stack.pop();
+            }
+            if (stack.isEmpty()) {
+                ans[i] = -1;
+            } else {
+                ans[i] = stack.peek();
+            }
+            stack.push(arr[i]);
+        }
+        for (int i = 0; i < n; i++) {
+            System.out.print(ans[i] + " ");
+        }
+        System.out.println();
+    }
+}
