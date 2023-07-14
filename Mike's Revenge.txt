@@ -1,0 +1,33 @@
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        int q = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+        
+        for(int i=0; i<q; i++){
+            int t = sc.nextInt();
+            if(t==1){
+                int index = sc.nextInt()-1;
+                int k = sc.nextInt();
+                arr[index] = k;
+            }
+            else{
+                int k = sc.nextInt();
+                for(int j=0; j<n; j++){
+                    arr[j] = k;
+                }
+            }
+           int sum=0;
+            for(int j=0; j<n; j++){
+                sum += arr[j];
+            }
+            System.out.println(sum);
+        }
+    }
+}
