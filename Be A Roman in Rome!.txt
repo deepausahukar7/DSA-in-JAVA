@@ -1,0 +1,16 @@
+import java.util.*;
+class Main {
+    public static String  romanRome(int n){
+    String arr[] = {"","M","MM","MMM"};
+    String arr2[] = {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
+    String arr3[] = {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};
+    String arr4[] = {"","I","II","III","IV","V","VI","VII","VIII", "IX"};
+    return arr[n/1000] +arr2[(n%1000)/100] +arr3[(n%100)/10] +arr4[n%10];
+
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+       System.out.println(romanRome(n)) ;
+    }
+}

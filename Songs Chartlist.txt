@@ -1,0 +1,77 @@
+import java.util.*;
+
+class song {
+    // complete the class as mentioned in the problem statement above
+
+    String name;
+    int duration;
+    int popularity;
+
+    song(int duration, String name, int popularity) {
+        this.name = name;
+        this.duration = duration;
+        this.popularity = popularity;
+    }
+
+}
+
+class chartlist {
+    // complete the class as mentioned in the problem statement above
+    int n;
+    song[] arr;
+
+    public chartlist(int n, song[] arr) {
+        this.n = n;
+        this.arr = arr;
+    }
+
+    String[] top_five() {
+        Arrays.sort(arr, (a, b) -> a.popularity - b.popularity);
+        song[] topFive = new song[5];
+
+        for (int i = 0; i < 5; i++) {
+            topFive[i] = arr[i];
+        }
+
+        String[] topFiveNames = new String[5];
+        for (int i = 0; i < 5; i++) {
+            topFiveNames[i] = topFive[i].name;
+        }
+        return topFiveNames;
+    }
+
+    String leastPopular() {
+
+        song leastPopular = arr[arr.length - 1];
+
+        return leastPopular.name;
+
+    }
+
+    public String mostPopular() {
+        song mostPopular = arr[0];
+
+        return mostPopular.name;
+    }
+
+    public String longestSong() {
+        song longestSong = arr[0];
+        for (int i = 1; i < n; i++) {
+            if (arr[i].duration > longestSong.duration) {
+                longestSong = arr[i];
+            }
+        }
+        return longestSong.name;
+    }
+
+    public String shortestSong() {
+        song shortestSong = arr[0];
+        for (int i = 1; i < n; i++) {
+            if (arr[i].duration < shortestSong.duration) {
+                shortestSong = arr[i];
+            }
+        }
+        return shortestSong.name;
+    }
+
+}

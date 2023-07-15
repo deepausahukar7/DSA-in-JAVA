@@ -1,0 +1,92 @@
+import java.util.*;
+import java.io.*; 
+ class Main{
+      static class FastReader {
+        BufferedReader br;
+        StringTokenizer st;
+ 
+        public FastReader()
+        {
+            br = new BufferedReader(
+                new InputStreamReader(System.in));
+        }
+ 
+        String next()
+        {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+ 
+        int nextInt() { return Integer.parseInt(next()); }
+ 
+        long nextLong() { return Long.parseLong(next()); }
+ 
+        double nextDouble()
+        {
+            return Double.parseDouble(next());
+        }
+ 
+        String nextLine()
+        {
+            String str = "";
+            try {
+                str = br.readLine();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
+     
+     
+     public static void signalCapacity(int n, int[] arr){
+         
+         
+         Stack<Integer> stk = new Stack<>();
+         
+         StringBuilder sb = new StringBuilder();
+         
+         for(int i=0; i<n; i++){
+             
+             while(stk.size() !=0 && arr[stk.peek()]  <= arr[i]){
+                 stk.pop();
+             }
+             if(stk.size()==0){
+                 sb.append((i+1)+" ");
+             }
+             else{
+                 sb.append(i-stk.peek()+" ");
+             }
+             stk.push(i);
+         }
+         System.out.println(sb);
+         
+     }
+     
+    
+     
+        public static void main(String[] args){
+           FastReader s = new FastReader();
+            int t = s.nextInt();
+            
+            while(t--!=0){
+                
+              int n = s.nextInt(); 
+              
+              int[] arr = new int[n];
+              for(int i=0; i<n; i++){
+                  arr[i] = s.nextInt();
+              }
+              signalCapacity(n,arr);
+              
+            }
+        }
+ }            
