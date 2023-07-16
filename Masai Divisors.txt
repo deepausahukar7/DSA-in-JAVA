@@ -1,0 +1,9 @@
+  public static void masaiDivisors(int left,int right,int k){
+    //write your code here
+     int count = 0;
+    for(int i=left; i<=right; i++){
+        if(i%k==0){
+            count++;
+        }
+    }System.out.println(count);
+  }
