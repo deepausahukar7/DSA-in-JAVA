@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t-- != 0) {
+            int n = scanner.nextInt();
+            int m = scanner.nextInt();
+            int[][] matrix = new int[n][m];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    matrix[i][j] = scanner.nextInt();
+                }
+            }
+            Set<Integer> set = new HashSet<>();
+            for (int j = 0; j < m; j++) {
+                set.add(matrix[0][j]);
+            }
+            for (int i = 1; i < n; i++) {
+                Set<Integer> currentRow = new HashSet<>();
+                for (int j = 0; j < m; j++) {
+                    currentRow.add(matrix[i][j]);
+                }
+                set.retainAll(currentRow);
+            }
+            System.out.println(set.size());
+        }
+        scanner.close();
+    }
+}

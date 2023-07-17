@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        int[][] matrix = new int[n][n];
+       for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+
+     
+        rotateBy90(n, matrix);
+    }
+
+    public static void rotateBy90(int n, int[][] matrix) {
+        for (int i = n - 1; i >= 0; i--) {
+            StringBuilder bag = new StringBuilder();
+            for (int j = 0; j < n; j++) {
+                bag.append(matrix[j][i]).append(" ");
+            }
+            System.out.println(bag.toString());
+        }
+    }
+}
