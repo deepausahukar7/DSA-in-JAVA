@@ -1,0 +1,39 @@
+class stack{
+  // complete the class as mentioned in the problem statement
+  private int top;
+  private int size;
+  private int[] arr; 
+  public stack(int size){
+      this.size=size;
+      this.top=-1;
+      this.arr=new int[size];
+  }
+  public  boolean push(int data){
+      if(this.top==this.size-1){
+          return false;
+      }
+      this.top++;
+      this.arr[this.top]=data;
+      return true;
+  }
+  public boolean pop(){
+      if(this.top==-1){
+          
+      return false;
+      }
+      System.out.println(this.arr[this.top]);
+      this.top--;
+      return true;
+  }
+  public boolean peek(){
+     if(this.top==-1){
+         
+     return false;
+     }
+      System.out.println(this.arr[this.top]);
+      return true; 
+  }
+  public int size(){
+      return this.top+1;
+  }
+}

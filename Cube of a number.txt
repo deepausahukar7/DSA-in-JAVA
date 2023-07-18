@@ -1,0 +1,6 @@
+    public static void cubeOfNumber(int a){
+        //write your code here
+        int cube = (int)Math.pow(a,3);
+        System.out.println(cube);
+    }
+}
