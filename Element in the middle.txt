@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+       
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int maxLeft = Integer.MIN_VALUE;
+        for (int i = 1; i < n - 1; i++) {
+          
+            int cur = arr[i];
+            
+            boolean leftGreater = true;
+            
+            for (int j = 0; j < i; j++) {
+                if (arr[j] >= cur) {
+                    leftGreater = false;
+                    break;
+                }
+            }
+            if (!leftGreater) {
+                continue;
+            }
+            
+            boolean rightGreater = true;
+            
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < cur) {
+                    rightGreater = false;
+                    break;
+                }
+            }
+            if (rightGreater) {
+                System.out.println(cur);
+                return;
+            }
+        }
+        System.out.println("-1");
+    }
+}

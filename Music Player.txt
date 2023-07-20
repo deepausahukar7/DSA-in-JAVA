@@ -1,0 +1,31 @@
+class song{
+  // complete the class as mentioned in the description above
+  int length;
+  String language;
+  int index;
+   
+   song(int i,int l,String la){
+        length=l;
+        language=la;
+        index=i;
+    }
+    public int length(){
+        return length;
+    }
+    public String language(){
+        return language;
+    }
+    public String category(){
+        
+        switch(index){
+            case 1:return "Classical";
+            case 2:return "Hip Hop";
+            case 3:return "R&B";
+            case 4:return "Bollywood";
+            case 5:return "EDM";
+            default:return "Originals";
+        }
+    }
+}
+
+
