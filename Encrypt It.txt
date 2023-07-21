@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+ class Main {
+     public static void encrypt(String str, int k){
+         
+         String caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+         String small = "abcdefghijklmnopqrstuvwxyz";
+         String nums = "0123456789";
+          StringBuilder bag = new StringBuilder();
+          
+          for(int i=0; i<str.length(); i++){
+              
+              if(caps.indexOf(str.charAt(i)) != -1){
+                  
+                bag.append(caps.charAt (((caps.indexOf(str.charAt(i))+k)%26)));
+              }
+              else if(small.indexOf(str.charAt(i)) != -1){
+                  
+                  bag.append(small.charAt (((small.indexOf(str.charAt(i))+k)%26)));
+                      
+                  
+              }
+              else if(nums.indexOf(str.charAt(i)) != -1){
+                  int index = (nums.indexOf(str.charAt(i))+k)%10;
+                  char num = nums.charAt(index);
+                  bag.append(num);
+              }
+              else{
+                  bag.append(str.charAt(i));
+              }
+          }
+        System.out.println(bag);  
+     }
+     
+	
+	public static void main(String[] args){
+	  Scanner sc = new Scanner(System.in);
+	  String str = sc.next();
+	  int k = sc.nextInt();
+	  encrypt(str,k);
+	} 
+ }
