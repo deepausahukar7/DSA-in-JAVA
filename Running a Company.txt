@@ -1,0 +1,124 @@
+class employee{
+  // complete the class as mentioned in the problem statement
+  
+    int employee_id;
+    String name;
+    int salary;
+    boolean stock_options;
+    int vesting_period;
+
+    
+    int employeeNumber(){
+        return employee_id;
+    }
+    
+    String name(){
+        return name;
+    }
+    int salary(){
+       return salary; 
+    }
+    boolean stock_options(){
+        if(stock_options){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    int vesting_period(){
+       if(!stock_options){
+           return 0;
+       } 
+       else{
+           return vesting_period;
+       }
+    }
+
+    
+    public  employee(int a,String b,int c, boolean d, int e){
+        
+     this.employee_id =a;
+    this.name= b;
+     this.salary=c;
+     this.stock_options=d;
+     this.vesting_period=e;
+        
+    }
+    
+}
+
+
+class company{
+  // complete the class as mentioned in the problem statement
+  int size;
+employee[] arr;
+
+  public company(int s,employee[] arr ){
+      this.size=s;
+this.arr = arr;
+  }
+
+void sortSalary(){
+   for(int i=0; i<arr.length; i++){
+         for(int j=0; j<arr.length-1; j++){
+           if(arr[j].salary>(arr[j+1].salary)){
+               employee temp = arr[j];
+               arr[j] = arr[j+1];
+               arr[j+1] = temp;
+           } 
+         }
+     } 
+}
+void sortEmployeeId(){
+    
+    for(int i=0; i<arr.length; i++){
+         for(int j=0; j<arr.length-1; j++){
+           if(arr[j].employee_id>(arr[j+1].employee_id)){
+               employee temp = arr[j];
+               arr[j] = arr[j+1];
+               arr[j+1] = temp;
+           } 
+         }
+     }  
+}
+void sortVestingPeriod(){
+      for(int i=0; i<arr.length; i++){
+         for(int j=0; j<arr.length-1; j++){
+           if(arr[j].vesting_period<(arr[j+1].vesting_period)){
+               employee temp = arr[j];
+               arr[j] = arr[j+1];
+               arr[j+1] = temp;
+           } 
+         }
+     } 
+}
+void stockOrNot(int id){
+    
+    employee e = null;
+    for(int i=0; i<arr.length; i++){
+       if(arr[i].employee_id==id){
+           e = arr[i];
+          
+        
+       }
+    }
+       if(e != null){
+            if(e.stock_options == true){
+               System.out.println("Stock Granted to " + e.name);
+           }
+           else if(e.stock_options == false){
+               System.out.println("Stock not Granted to " + e.name);
+           }
+       }
+          else{
+                System.out.println("Invalid Employee ID");
+          }
+    
+}
+int size(){
+    return size;
+}
+  
+}
+
