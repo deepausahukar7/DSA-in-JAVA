@@ -1,0 +1,38 @@
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int tc = sc.nextInt();
+        for (int j = 0; j < tc; j++) {
+            int n = sc.nextInt();
+            List<Integer> arr = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                arr.add(sc.nextInt());
+            }
+
+            int x = myFun(arr, n);
+            System.out.println(x);
+        }
+    }
+
+    static int myFun(List<Integer> arr, int n) {
+
+        // create postive container till highest number
+        List<Integer> list = new ArrayList<>();
+        for (int i = 1; i <= 100000; i++) {
+            list.add(i);
+        }
+        // find element
+        int ans = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (arr.contains(list.get(i))) {
+                continue;
+            } else {
+                ans = list.get(i);
+                break;
+            }
+        }
+        return ans;
+    }
+}
