@@ -1,0 +1,21 @@
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int tc =sc.nextInt();
+        Map<String,Integer>hs=new HashMap<>();
+        
+        while(tc-->0){
+          String s=sc.next();
+          if(hs.containsKey(s)){
+             int v=hs.get(s);
+              System.out.println(s+hs.get(s));
+             hs.put(s,v+1);
+          }
+          else{
+              hs.put(s,1);
+              System.out.println("OK");
+          }
+        }
+    }
+}
